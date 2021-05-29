@@ -1,0 +1,31 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Login</mat-card-title>
+        </mat-card-header>
+        <form class="example-form" [formGroup] = "loginForm" (ngSubmit)="onSubmit()"> 
+            <mat-card-content>
+                <mat-form-field class="example-full-width" >
+                    <input matInput placeholder="Email" formControlName="email">
+                    <mat-icon matSuffix>email</mat-icon>
+                    <mat-error *ngIf="errorHandling('email', 'required')">
+                        Email is <strong>required</strong>
+                    </mat-error>
+                    <mat-error *ngIf="errorHandling('email', 'email')">Email adress must be <b>valid</b></mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Password" formControlName = "password"> 
+                    <mat-icon matSuffix>lock icon</mat-icon>
+                    <mat-error *ngIf="errorHandling('password', 'required')">
+                        Password is <strong>required</strong>
+                    </mat-error>
+                    <mat-error *ngIf="errorHandling('password', 'minlength')">Password adress must be <b>more than 6 characters</b></mat-error>
+                </mat-form-field>
+
+            </mat-card-content>
+            <button mat-stroked-button color="accent" class="btn-block" [disabled]="!loginForm.valid" type="submit">Login</button>
+        </form>
+    </mat-card>
+</div>
+
+
